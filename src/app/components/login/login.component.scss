@@ -1,0 +1,58 @@
+.login-container {
+    top: 0;
+    margin: 0;
+    padding: 0;
+    display: block;
+    background-color: #303f9f;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+.login-button {
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+    margin: 20px auto;
+}
+
+.contact-button {
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+    margin: 20px auto;
+}
+
+mat-card {
+    width: 40%;
+    margin: 10% auto;
+    border-radius: 8px;
+}
+
+mat-form-field,
+mat-checkbox {
+    width: 100%;
+    display: block;
+    margin: auto;
+}
+
+mat-card-content {
+    margin-top: 20px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.col {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.col:last-child {
+    margin-right: 0;
+}

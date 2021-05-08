@@ -1,0 +1,75 @@
+<div>
+  <app-widget-area [data]="areas"></app-widget-area>
+</div>
+
+<br>
+
+<mat-divider></mat-divider>
+
+<br>
+
+<div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards">
+  <mat-card fxFlex="25">
+    <app-widget-card label="CN-XD" total="502kWh" percentage="50" [data]="cards"></app-widget-card>
+  </mat-card>
+  <mat-card fxFlex="25">
+    <app-widget-card label="TM-DV" total="106kWh" percentage="40" [data]="cards"></app-widget-card>
+  </mat-card>
+  <mat-card fxFlex="25">
+    <app-widget-card label="NN-LN" total="163kWh" percentage="30" [data]="cards"></app-widget-card>
+  </mat-card>
+  <mat-card fxFlex="25">
+    <app-widget-card label="NH-KS" total="180kWh" percentage="20" [data]="cards"></app-widget-card>
+  </mat-card>
+</div>
+
+<br>
+
+<mat-divider></mat-divider>
+
+<br>
+
+<div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+  <div fxFlex="60">
+
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource">
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef> No. </th>
+          <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="weight">
+          <th mat-header-cell *matHeaderCellDef> Position </th>
+          <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="symbol">
+          <th mat-header-cell *matHeaderCellDef> Phone </th>
+          <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    </div>
+
+  </div>
+
+  <div fxFlex="40">
+    <app-widget-pie [data]="pies"></app-widget-pie>
+  </div>
+
+</div>

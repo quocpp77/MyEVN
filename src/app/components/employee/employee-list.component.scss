@@ -1,0 +1,20 @@
+table {
+  width: 100%;
+}
+
+.mat-column-empCode{
+  flex: 0 0 50px;
+}
+
+.mat-column-lastName{
+  flex: 0 0 70px;
+}
+
+.search-div{
+  margin: 0 0 0 0px;
+  .search-form-field{
+    margin-left: 10px;
+    width: 60%;
+  }
+}
+

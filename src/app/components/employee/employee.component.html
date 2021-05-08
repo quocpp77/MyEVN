@@ -1,0 +1,90 @@
+<form [formGroup]="service.form" (ngSubmit)="onSubmit()" class="normal-form">
+
+  <mat-toolbar>
+    <span>{{ service.form.controls['$key'].value?"Cập nhật thông tin":"Tạo mới nhân viên" }}</span>
+    <span class="fill-remaining-space"></span>
+    <div class="button-row">
+      <button mat-raised-button color="primary" type="submit" [disabled]="service.form.invalid">Lưu</button>
+      <button mat-raised-button color="warn" (click)="onClose()">Bỏ qua</button>
+    </div>
+  </mat-toolbar>
+
+  <mat-grid-list cols="2" rowHeight="300px">
+
+    <mat-grid-tile>
+      <div class="controles-container">
+
+        <input type="hidden" formControlName="$key">
+        <input type="hidden" formControlName="password">
+
+        <mat-form-field>
+          <input formControlName="empCode" matInput placeholder="Mã nhân viên*" maxlength="5">
+          <mat-error *ngIf="service.form.controls['empCode'].errors?.required">Value is required</mat-error>
+          <mat-error *ngIf="service.form.controls['empCode'].errors?.minlength">Min is 5 characters long
+          </mat-error>
+        </mat-form-field>
+
+        <table class="table-full-width" cellspacing="0">
+          <tr>
+            <td>
+              <mat-form-field>
+                <input formControlName="firstName" matInput placeholder="Họ đệm*" maxlength="50">
+                <mat-error *ngIf="service.form.controls['firstName'].errors?.required">Value is required</mat-error>
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field>
+                <input formControlName="lastName" matInput placeholder="Tên*" maxlength="10">
+                <mat-error *ngIf="service.form.controls['lastName'].errors?.required">Value is required</mat-error>
+              </mat-form-field>
+            </td>
+          </tr>
+        </table>
+
+        <mat-form-field>
+          <input formControlName="birthday" matInput [matDatepicker]="picker" placeholder="Ngày sinh">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <div class="add-bottom-padding">
+          <mat-radio-group formControlName="gender">
+            <mat-radio-button value="0">Nam</mat-radio-button>
+            <mat-radio-button value="1">Nữ</mat-radio-button>
+            <mat-radio-button value="2">Khác</mat-radio-button>
+          </mat-radio-group>
+        </div>
+
+      </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <div class="controles-container">
+
+        <mat-form-field>
+          <mat-select formControlName="deptId" placeholder="Phòng/ban">
+            <mat-option>None</mat-option>
+            <ng-container *ngFor="let dept of departmentService.array">
+              <mat-option value="{{ dept.$key }}">{{ dept.code }}-{{ dept.name }}</mat-option>
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input formControlName="phone" matInput placeholder="Phone" maxlength="50" type="tel">
+          <mat-error *ngIf="service.form.controls['phone'].errors?.required">Value is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input formControlName="email" matInput placeholder="Email" maxlength="50" type="email">
+          <mat-error *ngIf="service.form.controls['email'].errors?.required">Value is required</mat-error>
+        </mat-form-field>
+
+        <mat-checkbox class="add-bottom-padding">Hiệu lực</mat-checkbox>
+
+      </div>
+
+    </mat-grid-tile>
+
+  </mat-grid-list>
+</form>
